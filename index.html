@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Tool</title>
+    <style>
+        .container{
+            width: 100%;
+        }
+        .column{
+            border: 2px solid black; 
+            padding: 5px;
+        }
+        .cv-title{
+            border: 1px solid black;
+            text-align: center;
+            margin-bottom: 1px;
+        }
+        .cv-body{
+            display: flex;
+        }
+        .column-title{
+            text-align: center;
+        }
+        .col-left{
+            width: 24%;
+            min-height: 1500px;
+            background-color: #afafaf;
+        }
+        .col-mid{
+            width: 24%;
+            min-height: 500px;
+            background-color: #d1d1d1;
+        }
+        .col-right{
+            width: 52%;
+            min-height: 500px;
+            background-color: rgb(241, 33, 33);
+            display: flex;
+            margin: 0px;
+            padding: 0%;
+        }
+        h4{
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        label{
+            width: 33%;
+            display:inline-block;
+            margin-bottom: 5px;
+        }
+        .col-mid label{
+            width: 45%;
+            display:inline-block;
+            margin-bottom: 5px;
+        }
+        .leftSideOfCv{
+            margin-left: 3%;
+            background-color: rgb(190, 2, 2);
+            width: 35%;
+            z-index: 2;
+            height: 100%;
+            margin-top: 0%;
+            
+        }
+        
+        .pPicture{
+            height: 24%;
+            width: 100%;
+        }
+        #pp{
+
+            border: 1px solid;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+            height: 60%;
+            width: 70%;
+            margin: auto;                    
+            padding: 3px;
+            margin-top: 1rem;
+        }
+        .rightSideOfCv{
+            width: 62%;
+            z-index: 2;  
+            height: 100%;         
+            position: relative;
+            display: block;
+        }
+        .nameTitleBox{
+            height: 25%;
+            width: 100%;
+            background-color: rgb(47, 47, 47);
+            z-index: 3;
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;           
+            position: absolute;
+            top: 0;
+            right: 0;
+    
+        }
+        #nameTitleBoxLine{
+            width: 10%;
+        }
+        #nameTitleBoxName{
+            padding-top: 6rem;
+        }
+        #contact{
+            height: 25%;
+
+        }
+        #cvEducation{
+            height: 25%;
+        }
+        #cvSkills{
+            height: 25%;
+        }
+        .cvHeaderLine{
+            width: 90%;
+            border: 2px solid black;
+        }
+        .cvHeader h2 {
+            margin: 0%;
+            padding: 0%;
+            margin-left: 5%;
+        }
+        #about{
+            padding-top: 80%;
+            height: 30%;
+            z-index: 4;
+        }
+        #cvExperience{
+            height: 45%;
+        }
+        .input-container {
+            display: flex; 
+            gap: 5px; 
+        }
+        #numberOfSchools label{
+            width: 15%;
+            display:inline-block;
+            margin-bottom: 5px;
+
+        }
+        #numberOfSchools input{
+            width: 35%;
+            margin-right: 5px;
+        }
+        #numberOfSkills label{
+            width: 18%;
+            display:inline-block;
+            margin-bottom: 5px;
+
+        }
+        #numberOfSkills input{
+            width: 35%;
+            margin-right: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cv-title">
+            <h2>CV Hazırlama Aracı</h2>
+        </div>
+        <div class="cv-body">
+            <div class="column col-left">
+                <div class="column-title">
+                    <h3>Metin İçerikleri</h3>
+                </div>
+
+                <hr class="line" />
+
+                <h4>İsim Kutusu</h4>
+                <label for="nameSurname">Ad Soyad :</label>
+                <input type="text" id="nameSurname">
+                <br>
+                <label for="title">Ünvan :</label>
+                <input type="text" id="title">
+                <br>
+
+                <h4>İletişim Bilgileri</h4>
+                <label for="tel">Telefon :</label>
+                <input type="tel" id="tel">
+                <br>
+                <label for="email">Mail :</label>
+                <input type="email" id="email">
+                <br>
+                <label for="web">Web :</label>
+                <input type="url" id="web">
+                <br>
+                <label for="adress">Adres :</label>
+                <textarea name="adress" id="adress" cols="24" rows="4"></textarea>
+                <br>
+
+                <h4>Eğitim Bilgileri</h4>
+                <label for="education">Açıklama :</label>
+                <textarea name="education" id="education" cols="24" rows="4"></textarea>
+                <br>
+                <label for="schools">Okul Sayısı :</label>
+                <select name="schools" id="schools">
+                    <option value="" selected disabled hidden>Seçiniz</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <div id="numberOfSchools">
+
+                </div>
+                <h4>Yetenekler</h4>
+                <label for="skills">Açıklama :</label>
+                <textarea name="skills" id="skills" cols="24" rows="4"></textarea>
+                <br>
+                <label for="skillCount">Yetenek Sayısı:</label>
+                <select name="skillCount" id="skillCount">
+                    <option value="" selected disabled hidden>Seçiniz</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <div id="numberOfSkills">
+
+                </div>
+
+
+                <h4>Hakkımda</h4>
+                <label for="information">Açıklama :</label>
+                <textarea name="information" id="information" cols="24" rows="4"></textarea>
+                <br>
+
+                <h4>İş Deneyimi</h4>
+                <label for="experience">Açıklama :</label>
+                <textarea name="experience" id="experience" cols="24" rows="4"></textarea>
+                <br><br>
+
+
+            </div>
+            <div class="column col-mid">
+                <div class="column-title">
+                    <h3>Görünüş</h3>
+                </div>
+                <hr class="line" />
+
+                <h4>Renkler</h4>
+                <label for="cvBgColor">Arkaplan Rengi :</label>
+                <input type="color" id="cvBgColor" onchange="CvBackgroundColor()">
+                <br>
+                
+                <label for="leftColColor">Sol Kolon Rengi :</label>
+                <input type="color" id="leftColColor" onchange="LeftSideBackgroundColor()">
+                <br>
+                
+                <label for="nameBoxColor">İsim Kutusu Rengi :</label>
+                <input type="color" id="nameBoxColor" onchange="NameBoxColor()">
+                <br>
+                
+                <label for="nameBoxTextColor">İsim Kutusu Yazı Rengi :</label>
+                <input type="color" id="nameBoxTextColor" onchange="NameBoxTextColor()">
+                <br>
+
+                <h4>Yazı Tipi</h4>
+                <label for="textFont">Yazı Tipi :</label>
+                <select name="textFont" id="textFont"  onchange="ChangeFontFamily()">
+                    <option value="" selected disabled hidden>Seçiminiz</option>
+                    <option value="1">Times New Roman</option>
+                    <option value="2">Courier New</option>
+                    <option value="3">Lucida Handwriting</option>
+                </select>
+                <br>
+
+                <h4>Fotoğraf</h4>
+                <label for="pictureFrame">Fotoğraf Çerçevesi Şekli :</label>
+                <select name="pictureFrame" id="pictureFrame" onchange="ChangePhotoFrameShape()">
+                    <option value="" selected disabled hidden>Seçiminiz</option>
+                    <option value="1">Köşeli</option>
+                    <option value="2">Oval</option>
+                    <option value="3">Yuvarlak</option>
+                </select>
+                <br>
+
+                <h4>Başlık Altı Çizgileri</h4>
+                <label for="titleUnderlinesColor">Çizgi Rengi :</label>
+                <input type="color" id="titleUnderlinesColor" onchange="BelowTitleLines()">
+
+                <label for="titleUnderlines">Fotoğraf Çerçevesi Şekli :</label>
+                <select name="titleUnderlines" id="titleUnderlines" onchange="LineShape()">
+                    <option value="" selected disabled hidden>Seçiminiz</option>
+                    <option value="1">Noktalı</option>
+                    <option value="2">Çizgili</option>
+                    <option value="3">Düz</option>
+                </select>
+                <br>
+
+
+
+            </div>
+            <div class="column col-right">
+
+                <div class="leftSideOfCv">
+                    <div class="pPicture">
+                        <div id="pp">Fotoğraf</div>
+                    </div>
+
+                    <div class="cvHeader" id="contact">
+                        <h2>İLETİŞİM</h2>
+                        <hr class="cvHeaderLine">
+                        <div id="contactContent" style="display: block; width: fit-content;">
+                            <ul>
+                                <li id="telContent"></li>
+                                <li id="emailContent"></li>
+                                <li id="adressContent"></li>
+                                <li id="webContent"></li>                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cvHeader" id="cvEducation">
+                        <h2>EĞİTİM</h2>
+                        <hr class="cvHeaderLine">
+                        <div id="cvEducationContent" style="margin-left: 10px;">
+
+                        </div>
+                        <div id="cvEducationSchools">
+                            <ul>
+                                <li>
+                                    <span id="education1SchoolName"></span>
+                                    <ul>
+                                        <li>
+                                            <span id="education1SchoolDescription"></span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span id="education2SchoolName"></span>
+                                    <ul>
+                                        <li>
+                                            <span id="education2SchoolDescription"></span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span id="education3SchoolName"></span>
+                                    <ul>
+                                        <li>
+                                            <span id="education3SchoolDescription"></span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cvHeader" id="cvSkills">
+                        <h2>YETENEKLER</h2>
+                        <hr class="cvHeaderLine">
+                        <div id="cvSkillsContent" style="margin-left: 10px;">
+
+                        </div>
+                        <div id="cvSkillsHave">
+                            <ul>
+                                <li>
+                                    <span id="skill1NameSpan"></span>
+                                    <ul>
+                                        <li>
+                                            <span id="skill1DescriptionSpan"></span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span id="skill2NameSpan"></span>
+                                    <ul>
+                                        <li>
+                                            <span id="skill2DescriptionSpan"></span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rightSideOfCv">
+                    <div class="nameTitleBox">
+                        <h1 id="nameTitleBoxName">AD SOYAD</h1>
+                        <hr id="nameTitleBoxLine">
+                        <h2 id="nameTitleBoxTitle">UNVAN</h2>
+                    </div>
+                    <div id="about" class="cvHeader">
+                        <h2>HAKKIMDA</h2>
+                        <hr class="cvHeaderLine">
+                        <div id="aboutContent" style="padding-left: 20px;">
+
+                        </div>
+                    </div>
+                    <div id="cvExperience" class="cvHeader">
+                        <h2>İŞ DENEYİMİ</h2>
+                        <hr class="cvHeaderLine">
+                        <div id="cvExperienceContent" style="padding-left: 20px;">
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+    
+
+    <script>
+
+        //Name Title Box of CV
+        const nameInput = document.getElementById('nameSurname');
+        const nameTitleBoxName = document.getElementById('nameTitleBoxName');
+
+        nameInput.addEventListener('keyup', function() {
+        const inputValue = nameInput.value;
+        nameTitleBoxName.textContent = inputValue;
+        });
+
+        const titleInput = document.getElementById("title");
+        const nameTitleBoxTitle = document.getElementById("nameTitleBoxTitle");
+
+        titleInput.addEventListener('keyup', function() {
+        const inputValue = titleInput.value;
+        nameTitleBoxTitle.textContent = inputValue;
+        });
+
+
+        // Contact Area of CV
+        const telInput = document.getElementById("tel");
+        const cvTelContent = document.getElementById("telContent");
+
+        telInput.addEventListener('keyup', function() {
+        const inputValue = telInput.value;
+        cvTelContent.textContent = inputValue;
+        });
+
+        const emailInput = document.getElementById("email");
+        const cvEmailContent = document.getElementById("emailContent");
+
+        emailInput.addEventListener('keyup', function() {
+        const inputValue = emailInput.value;
+        cvEmailContent.textContent = inputValue;
+        });
+
+        const adressInput = document.getElementById("adress");
+        const cvAdressContent = document.getElementById("adressContent");
+
+        adressInput.addEventListener('keyup', function() {
+        const inputValue = adressInput.value;
+        cvAdressContent.textContent = inputValue;
+        });
+
+        const webInput = document.getElementById("web");
+        const cvWebContent = document.getElementById("webContent");
+
+        webInput.addEventListener('keyup', function() {
+        const inputValue = webInput.value;
+        cvWebContent.textContent = inputValue;
+        });
+
+        //Education Area of CV
+        const educationInput = document.getElementById("education");
+        const cvEducationContent = document.getElementById("cvEducationContent");
+
+        educationInput.addEventListener('keyup', function() {
+        const inputValue = educationInput.value;
+        cvEducationContent.textContent = inputValue;
+        });
+
+        const schoolsSelect = document.getElementById('schools');
+        const numberOfSchoolsDiv = document.getElementById('numberOfSchools');
+        
+        schoolsSelect.addEventListener('change', function() {
+            const selectedValue = parseInt(schoolsSelect.value);
+
+            numberOfSchoolsDiv.innerHTML = '';
+
+            for (let i = 0; i < selectedValue; i++) {
+                const label = document.createElement('label');
+                label.textContent = `${i + 1}. Okul`;
+
+                var input1 = document.createElement('input');
+                input1.type = 'text';
+                input1.id = `${i + 1}schoolName`;
+
+                var input2 = document.createElement('input');
+                input2.type = 'text';
+                input2.id = `${i + 1}schoolDescription`; 
+
+                input2.placeholder = "Açıklama";
+
+                numberOfSchoolsDiv.appendChild(label);
+                numberOfSchoolsDiv.appendChild(input1);
+                numberOfSchoolsDiv.appendChild(input2);
+                numberOfSchoolsDiv.appendChild(document.createElement('br'));
+            }
+        });
+
+        const Input1Content = document.getElementById("1schoolName");
+        const input1WriteContent = document.getElementById("education1schoolName");
+
+        Input1Content.addEventListener('keyup', function() {
+        const inputValue = Input1Content.value;
+        input1WriteContent.textContent = inputValue;
+        });
+
+        // Skills Area of CV
+        const skillsInput = document.getElementById("skills");
+        const cvSkillsContent = document.getElementById("cvSkillsContent"); 
+
+        skillsInput.addEventListener('keyup', function() {
+            const inputValue = skillsInput.value;
+            cvSkillsContent.textContent = inputValue; 
+        });
+
+        const skillsSelect = document.getElementById('skillCount');
+        const numberOfSkillsDiv = document.getElementById('numberOfSkills'); 
+
+        skillsSelect.addEventListener('change', function() {
+            const selectedValue = parseInt(skillsSelect.value);
+                   
+            numberOfSkillsDiv.innerHTML = '';
+        
+            for (let i = 0; i < selectedValue; i++) {
+                const label = document.createElement('label');
+                label.textContent = `${i + 1}. Yetenek`;
+            
+                const input1 = document.createElement('input');
+                input1.type = 'text';
+                input1.id = `skillName${i + 1}`;
+            
+                const input2 = document.createElement('input');
+                input2.type = 'text';
+                input2.id = `skillDescription${i + 1}`;
+            
+                input2.placeholder = "Açıklama";
+            
+                numberOfSkillsDiv.appendChild(label); 
+                numberOfSkillsDiv.appendChild(input1); 
+                numberOfSkillsDiv.appendChild(input2); 
+                numberOfSkillsDiv.appendChild(document.createElement('br')); 
+            }
+        });
+
+        // About Part of CV
+        const aboutInput = document.getElementById("information");
+        const cvaboutContent = document.getElementById("aboutContent"); 
+
+        aboutInput.addEventListener('keyup', function() {
+            const inputValue = aboutInput.value;
+            cvaboutContent.textContent = inputValue; 
+        });
+
+        //Experience Part of CV
+        
+        const experienceInput = document.getElementById("experience");
+        const cvExperienceContent = document.getElementById("cvExperienceContent"); 
+
+        experienceInput.addEventListener('keyup', function() {
+            const inputValue = experienceInput.value;
+            cvExperienceContent.textContent = inputValue; 
+        });
+
+        function ChangeFontFamily() {
+            let selectedValue = document.getElementById("textFont").value;
+            let fontFamily;
+
+            if(selectedValue === "1") {
+                fontFamily = "'Times New Roman', Times, serif";
+            }
+            else if (selectedValue === "2") {
+                fontFamily = "'Courier New', Courier, monospace";
+            }
+            else if (selectedValue === "3") {
+                fontFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif";
+            }
+            else {
+                fontFamily = "";
+            }
+
+                let cvBodyText = document.querySelector(".container");
+                cvBodyText.style.fontFamily = fontFamily;   
+        }
+
+        function ChangePhotoFrameShape() {
+            let selectedValue = document.getElementById("pictureFrame").value;
+            let photoFrameShape = document.querySelector("#pp");
+
+            if (selectedValue === "1") {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "0";
+            } else if (selectedValue === "2") {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "40px";
+            } else if (selectedValue === "3") {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "50%";
+            } else {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "50%";
+            }
+        }
+
+        function LineShape() {
+            let selectedValue = document.getElementById("titleUnderlines").value;
+            let lineShapes = document.querySelectorAll(".cvHeaderLine");
+
+            lineShapes.forEach(line => {
+                if (selectedValue === "1") {
+                    line.style.borderStyle = "dotted";
+                } else if (selectedValue === "2") {
+                    line.style.borderStyle = "dashed";
+                } else if (selectedValue === "3") {
+                    line.style.borderStyle = "solid";
+                } else {
+                    line.style.borderStyle = "solid";
+                }
+            });
+        }
+
+        function CvBackgroundColor() {
+            let cvBackgroundColor = document.getElementById("cvBgColor").value;
+            let cvBackground = document.querySelector(".col-right");
+            cvBackground.style.backgroundColor = cvBackgroundColor;
+        }
+        function LeftSideBackgroundColor() {
+            let leftSideBackgroundColor = document.getElementById("leftColColor").value;
+            let leftSide = document.querySelector(".leftSideOfCv");
+            leftSide.style.backgroundColor = leftSideBackgroundColor;
+        }
+        function NameBoxColor() {
+            let nameBoxBackgroundColor = document.getElementById("nameBoxColor").value;
+            let nameBox = document.querySelector(".nameTitleBox");
+            nameBox.style.backgroundColor = nameBoxBackgroundColor;
+        }
+        function NameBoxTextColor() {
+            let nameBoxTextColor = document.getElementById("nameBoxTextColor").value;
+            let nameBoxText = document.querySelector(".nameTitleBox");
+            let nameTitleLine = document.querySelector("#nameTitleBoxLine");
+
+            nameBoxText.style.color = nameBoxTextColor;
+            nameTitleLine.style.color = nameBoxTextColor;
+        }
+        function BelowTitleLines() {
+            let nameBoxLineColor = document.getElementById("titleUnderlinesColor").value;
+            let lineElements = document.querySelectorAll(".cvHeaderLine");
+
+            lineElements.forEach(line => {
+                line.style.borderColor = nameBoxLineColor;
+            });
+        }
+
+        // For Education Area
+        function populateEducationSchools() {
+            for (let i = 1; i <= selectedValue; i++) {
+                const schoolName = document.getElementById(`${i}schoolName`).value;
+                const schoolDescription = document.getElementById(`${i}schoolDescription`).value;
+            
+                const educationSchoolNameSpan = document.getElementById(`education${i}SchoolName`);
+                const educationSchoolDescriptionSpan = document.getElementById(`education${i}SchoolDescription`);
+            
+                educationSchoolNameSpan.textContent = schoolName;
+                educationSchoolDescriptionSpan.textContent = schoolDescription;
+            }
+        }
+        
+        // For Skills Area
+        function populateSkills() {
+            for (let i = 1; i <= selectedValue; i++) {
+                const skillName = document.getElementById(`skillName${i}`).value;
+                const skillDescription = document.getElementById(`skillDescription${i}`).value;
+            
+                const skillNameSpan = document.getElementById(`skill${i}NameSpan`);
+                const skillDescriptionSpan = document.getElementById(`skill${i}DescriptionSpan`);
+            
+                skillNameSpan.textContent = skillName;
+                skillDescriptionSpan.textContent = skillDescription;
+            }
+        }
+        
+        // Listen for changes and call the appropriate functions
+        schoolsSelect.addEventListener('change', function() {
+            selectedValue = parseInt(schoolsSelect.value);
+            populateEducationSchools();
+        });
+        
+        skillsSelect.addEventListener('change', function() {
+            selectedValue = parseInt(skillsSelect.value);
+            populateSkills();
+        });
+
+    </script>
+
+
+</body>
+</html>
